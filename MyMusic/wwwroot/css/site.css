@@ -16,3 +16,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.home_left {
+    
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}
+
+.home_right {
+    
+    
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}

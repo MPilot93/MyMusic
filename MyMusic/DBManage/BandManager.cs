@@ -38,7 +38,7 @@ namespace MyMusic.DBManage
                         set [Nome]=@Nome,
                             [IdArtista]=@IdArtista,
                             [Immagine]=@Immagine,
-                            [Genere]=@Genere,
+                            [Genere]=@Genere
                         where ID=@ID";
             using var connection = new SqlConnection(connectionString);
             connection.Open();

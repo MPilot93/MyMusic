@@ -33,6 +33,13 @@ namespace MyMusic.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        public IActionResult ElencoArtisti()
+        {
+            var result = artistiDB.GetAll();
+
+            return View(result);
+        }
 
         [HttpGet]
         public IActionResult AggiungiBrano()
@@ -81,6 +88,28 @@ namespace MyMusic.Controllers
             bandDB.AggiungiBand(band);
             return RedirectToAction("Index");
         }
+
+
+        [HttpGet]
+        public IActionResult ModificaArtista(int id)
+        {
+            var artista = artistiDB.GetAll().Where(x => x.ID == id).FirstOrDefault();
+            return View(artista);
+        }
+
+        [HttpPost]
+        public IActionResult ModificaArtista(ArtistiViewModel artista)
+        {
+            var res = artistiDB.GetAll().Where(x => x.ID == artista.ID).FirstOrDefault();
+            if (res != null)
+                artistiDB.EditArtisti(artista);
+
+            return RedirectToAction("ElencoArtisti");
+        }
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

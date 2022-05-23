@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ArtistiViewModel>
+@{
+    ViewData["Title"] = "Elenco Artisti";
+}
+
+<h1 class="display-4">I miei artisti</h1>
+
+<table class=" table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.Nome)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Cognome)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.NomeArte)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Tipo)
+            </th>
+     
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var artista in Model)
+        {
+            <tr>
+                <td>@artista.Nome</td>
+                <td>@artista.Cognome</td>
+                <td>@artista.NomeArte</td>
+                <td>@artista.Tipo</td>
+             
+                <td>
+                    @Html.ActionLink("Modifica", "ModificaArtista", new{ ID=artista.ID}) |
+                    @Html.ActionLink("Indietro","Index")
+                </td>
+            </tr>
+        }
+    }

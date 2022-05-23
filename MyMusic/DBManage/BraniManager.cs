@@ -75,10 +75,11 @@ namespace MyMusic.DBManage
 
         }
     }
-       
 
-         
-        
 
-    
+    //command.Parameters.AddWithValue("@application_ex_id",((object) logSearch.LogID) ?? DBNull.Value);
+
+
+
+
 }
