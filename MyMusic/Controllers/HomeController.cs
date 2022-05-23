@@ -1,21 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyMusic.Models;
+using MyMusic.DBManage;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace MyMusic.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private BraniManager branoDB;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            branoDB = new BraniManager();
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var result = branoDB.GetAll();
+
+            return View(result);
         }
 
         public IActionResult Privacy()

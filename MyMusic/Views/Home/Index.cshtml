@@ -1,8 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<BranoViewModel>
+@{
+    ViewData["Title"] = "Tutti i brsni";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1 class="display-4">Tutti i brani</h1>
+
+<table class=" table">
+    <tr>
+        <td>
+            @Html.ActionLink("Aggiungi nuovo brano","AggiungiBrano")
+        </td>
+        <td>
+            @Html.ActionLink("Aggiungi nuovo album","AggiungiAlbum")
+        </td>
+        <td>
+            @Html.ActionLink("Aggiungi nuovo artista","AggiungiArtista")
+        </td>
+        <td>
+            @Html.ActionLink("Aggiungi nuova band","AggiungiBand")
+        </td>
+    </tr>
+</table>
+
+<table class=" table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.Titolo)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Band)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Album)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.AnnoUscita)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Durata)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Genere)
+            </th>
+        </tr>
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var brano in Model)
+        {
+            <tr>
+                <td>@brano.Titolo</td>
+                <td>@brano.Band</td>
+                <td>@brano.Album</td>
+                <td>@brano.AnnoUscita</td>
+                <td>@brano.Durata</td>
+                <td>@brano.Genere</td>
+                <td>
+                    @Html.ActionLink("Modifica", "Modifica", new{ ID=brano.ID}) |
+                    @Html.ActionLink("Dettagli", "Dettagli", new{ ID=brano.ID}) 
+                    
+                </td>
+            </tr>
+        }
+    }
+
+    else
+    {
+        <td colspan=6 class=" text-center">Nessun brano trovato</td>
+    }
+</table>
