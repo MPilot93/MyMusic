@@ -1,7 +1,7 @@
-﻿@model ArtistiViewModel;
+﻿@model AlbumViewModel;
 
 @{
-    ViewBag.Title = "Edit Artista";
+    ViewBag.Title = "Edit Album";
 }
 
 @if (ViewBag.Message != null)
@@ -14,34 +14,34 @@
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
-        <div>Modifica artista:</div>
+        <div>Modifica album:</div>
         <hr>
         @Html.HiddenFor(model => model.ID) 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.Titolo, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome)
+                @Html.EditorFor(model => model.Titolo)
             </div>
         </div>
         <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.Cognome, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.IdBrani, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Cognome)
+                @Html.EditorFor(model => model.IdBrani)
             </div>
         </div>
          <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.NomeArte, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.IdBand, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeArte)
+                @Html.EditorFor(model => model.IdBand)
             </div>
         </div>
          <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.Tipo, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.AnnoUscita, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tipo)
+                @Html.EditorFor(model => model.AnnoUscita)
             </div>
         </div>
 
@@ -56,5 +56,6 @@
 
 
 <div>
-    @Html.ActionLink("Indietro","ElencoArtisti")
+    @Html.ActionLink("Indietro","ElencoAlbum")
 </div>
+

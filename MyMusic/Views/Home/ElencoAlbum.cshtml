@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AlbumViewModel>
+@{
+    ViewData["Title"] = "Elenco Album";
+}
+
+<h1 class="display-4">I miei album</h1>
+
+<table class=" table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.Titolo)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.IdBrani)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.IdBand)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.AnnoUscita)
+            </th>
+     
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var album in Model)
+        {
+            <tr>
+                <td>@album.Titolo</td>
+                <td>@album.IdBrani</td>
+                <td>@album.IdBand</td>
+                <td>@album.AnnoUscita</td>
+             
+                <td>
+                    @Html.ActionLink("Modifica", "ModificaAlbum", new{ ID=album.ID}) |
+                    @Html.ActionLink("Indietro","Index")
+                </td>
+            </tr>
+        }
+    }

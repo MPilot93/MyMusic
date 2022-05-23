@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BandViewModel>
+@{
+    ViewData["Title"] = "Elenco Band";
+}
+
+<h1 class="display-4">Le mie Band</h1>
+
+<table class=" table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.Nome)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.IdArtista)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Immagine)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model=>model.Genere)
+            </th>
+     
+    @if (Model!=null && Model.Any())
+    {
+        foreach(var band in Model)
+        {
+            <tr>
+                <td>@band.Nome</td>
+                <td>@band.IdArtista</td>
+                <td>@band.Immagine</td>
+                <td>@band.Genere</td>
+             
+                <td>
+                    @Html.ActionLink("Modifica", "ModificaBand", new{ ID=band.ID}) |
+                    @Html.ActionLink("Indietro","Index")
+                </td>
+            </tr>
+        }
+    }

@@ -1,7 +1,7 @@
-﻿@model ArtistiViewModel;
+﻿@model BandViewModel;
 
 @{
-    ViewBag.Title = "Edit Artista";
+    ViewBag.Title = "Edit Band";
 }
 
 @if (ViewBag.Message != null)
@@ -14,7 +14,7 @@
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
-        <div>Modifica artista:</div>
+        <div>Modifica band:</div>
         <hr>
         @Html.HiddenFor(model => model.ID) 
         <div class="form-group">
@@ -25,23 +25,23 @@
         </div>
         <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.Cognome, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.IdArtista, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Cognome)
+                @Html.EditorFor(model => model.IdArtista)
             </div>
         </div>
          <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.NomeArte, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.Immagine, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeArte)
+                @Html.EditorFor(model => model.Immagine)
             </div>
         </div>
          <hr>
         <div class="form-group">
-            @Html.LabelFor(model => model.Tipo, htmlAttributes: new {@class = "label col-md-2"})
+            @Html.LabelFor(model => model.Genere, htmlAttributes: new {@class = "label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tipo)
+                @Html.EditorFor(model => model.Genere)
             </div>
         </div>
 
@@ -56,5 +56,5 @@
 
 
 <div>
-    @Html.ActionLink("Indietro","ElencoArtisti")
+    @Html.ActionLink("Indietro","ElencoBand")
 </div>

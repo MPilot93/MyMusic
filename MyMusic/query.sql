@@ -5,7 +5,7 @@ Titolo nvarchar(50) not null,
 Band nvarchar(50) not null,
 Album nvarchar(50)  null,
 AnnoUscita int null,
-Durata numeric null,
+Durata decimal null,
 Genere nvarchar(50)  null)
 
 create table Album(
@@ -20,7 +20,6 @@ ID  int identity(1,1) primary key,
 Nome nvarchar(50) not null,
 Cognome nvarchar(50) not null,
 NomeArte nvarchar(50) not null,
-IdBand int null,
 Tipo nvarchar(50)  null)
 
 create table Band(
@@ -30,22 +29,24 @@ IdArtista int not null,
 Immagine nvarchar(2083) null,
 Genere nvarchar(50) null)
 
-insert into Brani(Titolo,Band,AnnoUscita)
-values('Estate','Negramaro',2010)
-insert into Brani(Titolo,Band,AnnoUscita)
-values('Come mai','883',2005)
-insert into Brani(Titolo,Band,Album)
-values('Autunno','Test','Primo album')
+insert into Brani(Titolo,Band,AnnoUscita,Durata)
+values('Estate','Negramaro',2010,2.50)
+insert into Brani(Titolo,Band,AnnoUscita,Durata)
+values('Come mai','883',2005,3.20)
+insert into Brani(Titolo,Band,Album,Durata,AnnoUscita)
+values('Autunno','Test','Primo album',3.30,2015)
 
 
 insert into Album(Titolo,IdBrani,IdBand,AnnoUscita)
 values('Primo album',1,1,2010)
 
-insert into Artisti(Nome,Cognome,NomeArte,IdBand)
-values('Andrea','Rossi','Red',1)
+insert into Artisti(Nome,Cognome,NomeArte)
+values('Andrea','Rossi','Red')
 
 insert into Band(Nome,IdArtista,Genere)
 values('Test',2,'Rock')
+
+drop table Brani
 
 select * from Brani
 select * from Album

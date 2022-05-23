@@ -42,6 +42,22 @@ namespace MyMusic.Controllers
         }
 
         [HttpGet]
+        public IActionResult ElencoAlbum()
+        {
+            var result = albumDB.GetAll();
+
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult ElencoBand()
+        {
+            var result = bandDB.GetAll();
+
+            return View(result);
+        }
+
+        [HttpGet]
         public IActionResult AggiungiBrano()
         {
             return View();
@@ -107,7 +123,39 @@ namespace MyMusic.Controllers
             return RedirectToAction("ElencoArtisti");
         }
 
+        [HttpGet]
+        public IActionResult ModificaAlbum(int id)
+        {
+            var album = albumDB.GetAll().Where(x => x.ID == id).FirstOrDefault();
+            return View(album);
+        }
 
+        [HttpPost]
+        public IActionResult ModificaAlbum(AlbumViewModel album)
+        {
+            var res = albumDB.GetAll().Where(x => x.ID == album.ID).FirstOrDefault();
+            if (res != null)
+                albumDB.EditAlbum(album);
+
+            return RedirectToAction("ElencoAlbum");
+        }
+
+        [HttpGet]
+        public IActionResult ModificaBand(int id)
+        {
+            var band = bandDB.GetAll().Where(x => x.ID == id).FirstOrDefault();
+            return View(band);
+        }
+
+        [HttpPost]
+        public IActionResult ModificaBand(BandViewModel band)
+        {
+            var res = bandDB.GetAll().Where(x => x.ID == band.ID).FirstOrDefault();
+            if (res != null)
+                bandDB.EditBand(band);
+
+            return RedirectToAction("ElencoBand");
+        }
 
 
 
